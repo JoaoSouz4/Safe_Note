@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Note</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <ion-icon  name = "menu" id="burguer"></ion-icon >
+        <h1>Safe</span> <span>Note</span></h1>
+    </header>
+
+ 
+    <div class="sidebar" id="side">
+       <div class="info">
+            <div class="foto">
+
+            </div>
+            <h3>Usuário</h3>
+        </div>
+        <a href=""><ion-icon  name = "home"></ion-icon > <span>Home</span></a>
+        <a href=""><ion-icon name="document"></ion-icon> <span>Relatórios</span></a>
+        <a href=""><ion-icon  name = "person"></ion-icon> <span>Perfil</span></a>
+        <a href=""><ion-icon  name = "exit"></ion-icon> <span>Sair</span></a>
+    </div>
+
+    <main>
+
+        <div class="title">
+            <h1>Registro de Clientes</h1>
+        </div>
+
+        <section class="sessao">
+            <label for="">Nome</label>
+            <input type="text" class="input">
+            <label for="">Idade</label>
+            <input type="number"  class="input">
+            <label for="">Sexo</label>
+            <select class="input">
+                <option value="">Masculino</option>
+                <option value="">Feminino</option>
+            </select>
+           <label for="">Período de captação</label>
+            <input type="time"  class="input">
+            <label for="">Dia da semana</label>
+            <select  class="input">
+                <option value="">Segunda feira</option>
+                <option value="">Terça feira</option>
+                <option value="">Qaurta feira</option>
+                <option value="">Quinta feira</option>
+                <option value="">Sextafeira</option>
+                <option value="">Sábado</option>
+            </select>
+            <label for="">Serviço solicitado</label>
+            <select class="input">
+                <option value="">Avaliação</option>
+                <option value="">Manutenção</option>
+                <option value="">Aparelho</option>
+                <option value="">Limpeza</option>
+                <option value="">Restauração</option>
+                <option value="">Canal</option>
+                <option value="">Extração</option>
+                <option value="">Implante</option>
+                <option value="">Odontopediatria</option>
+                <option value="">Tratamento periodental</option>
+                <option value="">Prótese</option>
+            </select>
+
+            <div class="funcoes">
+                <label for="">Total Clientes adicionados: <span>0</span></label>
+                <div class="remove"><span>Remover Ultimo Cliente</span></div>
+                
+            </div>
+
+            <div class="b">
+                <button id="btn"><strong>Adicionar Cliente</strong></button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+
+        <div>
+            <h3>Desenvolvedor: João Souza</h3>
+        </div>
+
+        <div class="creditos">
+            <ion-icon name="logo-instagram" id="insta"></ion-icon>
+            <a href="https://www.instagram.com/jv.art.0/" target="_blank">@jv.art.0</a>
+        </div>
+
+    </footer>
+</body>
+<script  src = "https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js" > </script>
+<script src="script.js"></script>
+
+</html>
