@@ -3,12 +3,7 @@
 
 @keyframes a{
     from{width: 0px;}
-    to{width: 205px;}
-}
-
-@keyframes aR{
-    from{width: 205px;}
-    to{width: 0px;}
+    to{width: 165px;}
 }
 *{
     margin: 0px;

@@ -4,7 +4,7 @@ burguer.addEventListener('click',function(){
     
     if(sidebar.style.display ==='none') sidebar.style.display = 'block';
     else{
-         sidebar.style.display = 'none'
-    } 
+        sidebar.style.display = 'none'
+    }
 });
 
