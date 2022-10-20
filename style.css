@@ -146,7 +146,8 @@ header h1 span{
 
 .funcoes{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     margin-top: 15px;
 }
