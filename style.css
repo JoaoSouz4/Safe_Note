@@ -5,6 +5,10 @@
     from{width: 0px;}
     to{width: 165px;}
 }
+:root{
+    --cor1 :aqua;
+    --cor2 : rgb(12, 214, 214);
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -22,7 +26,7 @@ header{
     align-items: center;
     padding: 10px;
     position:fixed;
-    background-color: aqua;
+    background-color: var(--cor1);
     width: 100%;
     height: 55px;
 }
@@ -46,7 +50,7 @@ header h1 span{
 }
 .sidebar{
     display: none;
-    background-color: rgb(12, 214, 214);
+    background-color: var(--cor2);
     position: fixed;
     height: 100%;
     margin-top: 55px;
