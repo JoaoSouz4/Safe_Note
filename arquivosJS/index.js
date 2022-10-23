@@ -21,6 +21,12 @@ btn.addEventListener('click', function(){
     const hora = inputHora.value;
     const servico = inputServico.value;
 
+    if(nome == ''){
+        alert('Preencha pelo menos o nome para continuar');
+    }else if(dia == 'none'){
+        alert('É necessário indicar o dia de registro');
+    }else{
+
         let Cliente = {
             nome : nome,
             idade : idade, 
@@ -33,8 +39,7 @@ btn.addEventListener('click', function(){
         spancontador.innerHTML = contador;
         arrayClientela.push(Cliente);
 
-        //alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
-
+        alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
         //saída de dados*
 
         let registro = encontrarMaiorDia(arrayClientela);
@@ -44,6 +49,7 @@ btn.addEventListener('click', function(){
         
         mostrarStatus(registro, soma, servicoSemana, genero);
 
+    }
 });
 
 function mostrarStatus(registro, soma, servicoSemana, genero){
