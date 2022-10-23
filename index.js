@@ -7,56 +7,54 @@ const spancontador = document.querySelector('#contador');
 
 btn.addEventListener('click', function(){
 
+    const data = new Date();
+
     const inputNome = document.querySelector('#nome');
-    const inputIdade = document.querySelector('#idade');
     const inputSexo= document.querySelector('#sexo');
     const inputDia = document.querySelector('#dia');
-    const inputHora = document.querySelector('#hora');
     const inputServico = document.querySelector('#servico');
 
     const nome = inputNome.value;
-    const idade = inputIdade.value;
     const sexo = inputSexo.value;
     const dia = inputDia.value;
-    const hora = inputHora.value;
     const servico = inputServico.value;
 
     if(nome == ''){
         alert('Preencha pelo menos o nome para continuar');
-    }else if(dia == 'none'){
-        alert('É necessário indicar o dia de registro');
     }else{
 
         let Cliente = {
             nome : nome,
-            idade : idade, 
             sexo : sexo,
             dia : dia,
-            hora : hora,
+            hora : {
+                dia: data.getDate(),
+                mes: data.getMonth(),
+                ano: data. getFullYear(),
+                horas: data.getHours(),
+                minuto: data.getMinutes(),
+                dsemana : data.getDay()
+            },
             servico : servico
         }
         contador++;
         spancontador.innerHTML = contador;
         arrayClientela.push(Cliente);
 
-        alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
+        //alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
         //saída de dados*
 
-        let registro = encontrarMaiorDia(arrayClientela);
-        let soma = somarArray(registro[2]);
         let servicoSemana = encontrarMaiorServico(arrayClientela);
         let genero = encontrarMaiorGenero(arrayClientela);
+        let registro = maiorRegistro(arrayClientela);
         
-        mostrarStatus(registro, soma, servicoSemana, genero);
+        mostrarStatus(servicoSemana, genero, registro);
+
 
     }
 });
 
-function mostrarStatus(registro, soma, servicoSemana, genero){
-    console.log('Total clientes registrados: '+soma);
-
-    console.log('-----------------------');
-    console.log('O dia de maior registro foi: '+registro[0]+", "+registro[1]+" novos clientes foram adicionados neste dia");
+function mostrarStatus( servicoSemana, genero, registro){
 
     console.log('-----------------------');
     console.log('O serviço mais procurado durante a semana foi: '+servicoSemana[0]+", contendo: "+servicoSemana[1]+" novas solicitações deste procedimento");
@@ -65,7 +63,49 @@ function mostrarStatus(registro, soma, servicoSemana, genero){
     console.log(`${genero[0]}% dos clientes são do sexo masculino`);
     console.log(`${genero[1]}% dos clientes são do sexo feminino`);
 
+    console.log("-----------------------");
+    console.log(`O dia de maior registro de novos clientes foi: ${registro[0]}, contendo: ${registro[1]} novos registros`);
+
 }
+
+function maiorRegistro(Objects){
+    let maiorDiaSemana;
+    let dias = {
+        segunda:0, terca:0, quarta:0, quinta: 0, sexta:0, sabado:0
+    }
+    for (let i in Objects){
+        if(Objects[i].hora.dsemana == 0) dias.segunda++;
+        else if(Objects[i].hora.dsemana == 1) dias.terca++;
+        else if(Objects[i].hora.dsemana == 2) dias.quarta++;
+        else if(Objects[i].hora.dsemana == 3) dias.quinta++;
+        else if(Objects[i].hora.dsemana == 4) dias.sexta++;
+        else if(Objects[i].hora.dsemana == 5) dias.sabado++;
+    }
+    let arrayD = Object.values(dias);
+    let total = Math.max.apply(null, arrayD);
+    let maiorIndice = arrayD.indexOf(total);
+
+    switch(maiorIndice){
+        case 0: maiorDiaSemana = 'Segunda-Feira';
+        break;
+        case 1: maiorDiaSemana = 'Terça-Feira';
+        break;
+        case 2: maiorDiaSemana = 'Quarta-Feira';
+        break;
+        case 3: maiorDiaSemana = 'Quinta-Feira';
+        break;
+        case 4: maiorDiaSemana = 'Sexta-Feira';
+        break;
+        case 5: maiorDiaSemana = 'Sábado';
+        break;
+        default : console.log('ERRO');
+    }
+    let array = [maiorDiaSemana, total];
+    return array;
+
+}
+
+
 
 
 
