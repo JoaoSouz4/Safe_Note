@@ -33,10 +33,13 @@ btn.addEventListener('click', function(){
         contador++;
         spancontador.innerHTML = contador;
         arrayClientela.push(Cliente);
-        console.log(arrayClientela);
-        alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
+        //console.log(arrayClientela);
+        //alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
 
-        encontrarMaiorDia(arrayClientela);
+        let registro = encontrarMaiorDia(arrayClientela);
+        let soma = somarArray(registro[2]);
+        console.log('O dia de maior registro foi: '+registro[0]+", "+registro[1]+" novos clientes foram adicionados neste dia");
+        console.log('Total clientes registrados: '+soma);
 });
 
 remove.addEventListener('click', function(){
@@ -67,11 +70,14 @@ function encontrarMaiorGenero(array){
        else if(M==F){
         console.log('Empate');
         return F;
-       } 
-       
+       }  
 }
 
 function encontrarMaiorDia(array){
+    let arrayDia=[];
+    let numeroClientes;
+    let maiorDiaIndice;
+    let maiorDiaSemana;
     let dias = {
               segunda:0,terca:0,quarta:0,quinta:0,sexta:0,sabado:0
         }
@@ -85,8 +91,37 @@ function encontrarMaiorDia(array){
             else if(array[i].dia == 'Sábado') dias.sabado++;
         }
     let arraydias = Object.values(dias);
-   
-    
+
+     numeroClientes = Math.max.apply(null, arraydias);
+     maiorDiaIndice = arraydias.indexOf(numeroClientes);
+     maiorDiaSemana;
+
+        switch(maiorDiaIndice){
+            case 0: maiorDiaSemana = 'Segunda-Feira';
+            break;
+            case 1: maiorDiaSemana = 'Terça-Feira';
+            break;
+            case 2: maiorDiaSemana = 'Quarta-Feira';
+            break;
+            case 3: maiorDiaSemana = 'Quinta-Feira';
+            break;
+            case 4: maiorDiaSemana = 'Sexta-Feira';
+            break;
+            case 5: maiorDiaSemana = 'Sábado';
+            break;
+            default : console.log('ERRO');
+        }
+
+        arrayDia =[maiorDiaSemana, numeroClientes, arraydias]
+
+    return arrayDia; 
+}
+function somarArray(array){
+    let soma = 0;
+    for(let i = 0; i<array.length;i++){
+        soma = soma+array[i];
+    }
+    return soma;
 }
 
 
