@@ -1,20 +1,19 @@
 function encontrarMaiorGenero(array){
-    let M = 0;
-    let F = 0;
-       for( let i = 0; i<array.length;i++){
-            if(array[i].sexo == 'Masculino') M++
-            else if (array[i].sexo == 'Feminino') F++
-       }
-       if(M>F){
-        console.log('A maioria são Homens: '+M)
-        return M
-       } 
+    let m = 0;
+    let f = 0;
+    let porcentM, porcentF, total;
+    let resultado = [];
 
-       else if(F>M){
-        console.log('A maioria são mulheres: '+F);
-       } 
-       else if(M==F){
-        console.log('Empate');
-        return F;
-       }  
+       for( let i = 0; i<array.length;i++){
+            if(array[i].sexo == 'Masculino') m++
+            else if (array[i].sexo == 'Feminino') f++
+       }
+       total = m+f;
+       porcentM = (m*100)/total;
+       porcentF = (f*100)/total;   
+
+       resultado = [porcentM, porcentF];
+       
+       return resultado;
 }
+       

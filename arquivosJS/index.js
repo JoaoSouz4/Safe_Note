@@ -2,7 +2,6 @@ let arrayClientela = [];
 let contador = 0;
 
 const btn = document.querySelector('#btn');
-const remove = document.querySelector('.pop');
 const spancontador = document.querySelector('#contador');
 
 
@@ -34,27 +33,35 @@ btn.addEventListener('click', function(){
         spancontador.innerHTML = contador;
         arrayClientela.push(Cliente);
 
+        //alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
+
         //saída de dados*
 
         let registro = encontrarMaiorDia(arrayClientela);
         let soma = somarArray(registro[2]);
+        let servicoSemana = encontrarMaiorServico(arrayClientela);
+        let genero = encontrarMaiorGenero(arrayClientela);
+        
+        mostrarStatus(registro, soma, servicoSemana, genero);
 
-        alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
-
-        console.log(arrayClientela);
-        console.log('O dia de maior registro foi: '+registro[0]+", "+registro[1]+" novos clientes foram adicionados neste dia");
-        console.log('Total clientes registrados: '+soma);
 });
 
-remove.addEventListener('click', function(){
-    if(contador<=0) alert('Todos os clientes já foram removidos');
-    else{
-        contador--;
-        spancontador.innerHTML = contador;
-        arrayClientela.pop();
-        console.log(arrayClientela);
-    }
-});
+function mostrarStatus(registro, soma, servicoSemana, genero){
+    console.log('Total clientes registrados: '+soma);
+
+    console.log('-----------------------');
+    console.log('O dia de maior registro foi: '+registro[0]+", "+registro[1]+" novos clientes foram adicionados neste dia");
+
+    console.log('-----------------------');
+    console.log('O serviço mais procurado durante a semana foi: '+servicoSemana[0]+", contendo: "+servicoSemana[1]+" novas solicitações deste procedimento");
+
+    console.log("-----------------------");
+    console.log(`${genero[0]}% dos clientes são do sexo masculino`);
+    console.log(`${genero[1]}% dos clientes são do sexo feminino`);
+
+}
+
+
 
 
 
