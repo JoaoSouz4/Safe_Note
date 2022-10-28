@@ -12,7 +12,7 @@ function encontrarMaiorGenero(array){
        porcentM = (m*100)/total;
        porcentF = (f*100)/total;   
 
-       resultado = [porcentM, porcentF];
+       resultado = [porcentM.toFixed(2), porcentF.toFixed(2)];
        
        return resultado;
 }
