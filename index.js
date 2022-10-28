@@ -8,15 +8,12 @@ const spancontador = document.querySelector('#contador');
 btn.addEventListener('click', function(){
 
     const data = new Date();
-
-    const inputNome = document.querySelector('#nome');
-    const inputSexo= document.querySelector('#sexo');
-    const inputDia = document.querySelector('#dia');
-    const inputServico = document.querySelector('#servico');
+    let inputNome = document.querySelector('#nome');
+    let inputSexo= document.querySelector('#sexo');
+    let inputServico = document.querySelector('#servico');
 
     const nome = inputNome.value;
     const sexo = inputSexo.value;
-    const dia = inputDia.value;
     const servico = inputServico.value;
 
     if(nome == ''){
@@ -26,7 +23,6 @@ btn.addEventListener('click', function(){
         let Cliente = {
             nome : nome,
             sexo : sexo,
-            dia : dia,
             hora : {
                 dia: data.getDate(),
                 mes: data.getMonth(),
@@ -40,8 +36,9 @@ btn.addEventListener('click', function(){
         contador++;
         spancontador.innerHTML = contador;
         arrayClientela.push(Cliente);
+        console.log(arrayClientela);
 
-        //alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
+        alert('Cliente: '+Cliente.nome+' Registrado com sucesso!');
         //saída de dados*
 
         let servicoSemana = encontrarMaiorServico(arrayClientela);
@@ -49,8 +46,6 @@ btn.addEventListener('click', function(){
         let registro = maiorRegistro(arrayClientela);
         
         mostrarStatus(servicoSemana, genero, registro);
-
-
     }
 });
 
@@ -68,42 +63,7 @@ function mostrarStatus( servicoSemana, genero, registro){
 
 }
 
-function maiorRegistro(Objects){
-    let maiorDiaSemana;
-    let dias = {
-        segunda:0, terca:0, quarta:0, quinta: 0, sexta:0, sabado:0
-    }
-    for (let i in Objects){
-        if(Objects[i].hora.dsemana == 0) dias.segunda++;
-        else if(Objects[i].hora.dsemana == 1) dias.terca++;
-        else if(Objects[i].hora.dsemana == 2) dias.quarta++;
-        else if(Objects[i].hora.dsemana == 3) dias.quinta++;
-        else if(Objects[i].hora.dsemana == 4) dias.sexta++;
-        else if(Objects[i].hora.dsemana == 5) dias.sabado++;
-    }
-    let arrayD = Object.values(dias);
-    let total = Math.max.apply(null, arrayD);
-    let maiorIndice = arrayD.indexOf(total);
 
-    switch(maiorIndice){
-        case 0: maiorDiaSemana = 'Segunda-Feira';
-        break;
-        case 1: maiorDiaSemana = 'Terça-Feira';
-        break;
-        case 2: maiorDiaSemana = 'Quarta-Feira';
-        break;
-        case 3: maiorDiaSemana = 'Quinta-Feira';
-        break;
-        case 4: maiorDiaSemana = 'Sexta-Feira';
-        break;
-        case 5: maiorDiaSemana = 'Sábado';
-        break;
-        default : console.log('ERRO');
-    }
-    let array = [maiorDiaSemana, total];
-    return array;
-
-}
 
 
 
