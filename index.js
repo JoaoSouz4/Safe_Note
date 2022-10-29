@@ -25,7 +25,7 @@ btn.addEventListener('click', function(){
             sexo : sexo,
             hora : {
                 dia: data.getDate(),
-                mes: data.getMonth(),
+                mes: data.getMonth()+1,
                 ano: data. getFullYear(),
                 horas: data.getHours(),
                 minuto: data.getMinutes(),
@@ -59,7 +59,7 @@ function mostrarStatus( servicoSemana, genero, registro){
     console.log(`${genero[1]}% dos clientes são do sexo feminino`);
 
     console.log("-----------------------");
-    console.log(`O dia de maior registro de novos clientes foi: ${registro[0]}, contendo: ${registro[1]} novos registros`);
+    console.log(`O dia de maior registro de novos clientes foi: ${registro[0]}(${registro[2][0]}/${registro[2][1]}/${registro[2][2]}), contendo: ${registro[1]} novos registros`);
 
 }
 

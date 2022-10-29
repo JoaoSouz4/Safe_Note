@@ -14,6 +14,8 @@ function maiorRegistro(Objects){
     let arrayD = Object.values(dias);
     let total = Math.max.apply(null, arrayD);
     let maiorIndice = arrayD.indexOf(total);
+    let diaSemana = pegarData(Objects, maiorIndice);
+    console.log(diaSemana);
 
     switch(maiorIndice){
         case 0: maiorDiaSemana = 'Domingo';
@@ -31,6 +33,20 @@ function maiorRegistro(Objects){
         case 6: maiorDiaSemana = 'Sábado';
         default : console.log('ERRO');
     }
-    let array = [maiorDiaSemana, total];
+
+    let array = [maiorDiaSemana, total, diaSemana];
     return array;
+}
+
+function pegarData(Object, m){
+    let dia, mes, ano;
+    for( let i in Object){
+        if(Object[i].hora.dsemana == m){
+            dia = Object[i].hora.dia;
+            mes = Object[i].hora.mes;
+            ano = Object[i].hora.ano;
+        }
+    }
+    return array =[dia,mes,ano];
+    
 }
